@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HeilerEinteilung
+{
+    internal enum HealTarget
+    {
+        T1,
+        T2,
+        T3,
+        T4,
+        T5,
+        AT,
+        Melees,
+        Range
+    }
+}
