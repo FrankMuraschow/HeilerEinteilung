@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -119,6 +120,22 @@ namespace HeilerEinteilung
         private void btnAddAssoc_Click(object sender, EventArgs e)
         {
             this.AddAssocRow();
+        }
+
+        private void btnSaveAssoc_Click(object sender, EventArgs e)
+        {
+            var saveFile = new SaveFileDialog();
+
+            if (saveFile.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamWriter writer = new StreamWriter(saveFile.OpenFile()))
+                {
+                    //tankHealerAssociations.ForEach(assoc =>
+                    //{
+                    //    writer.WriteLine($@"{assoc.TankName};{assoc.HealerName};{assoc.};");
+                    //});
+                }
+            }
         }
     }
 }

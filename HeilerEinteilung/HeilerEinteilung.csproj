@@ -52,6 +52,11 @@
     <Compile Include="App.Designer.cs">
       <DependentUpon>App.cs</DependentUpon>
     </Compile>
+    <Compile Include="HealerClass.cs" />
+    <Compile Include="HealerClasses\Druid.cs" />
+    <Compile Include="HealerClasses\Priest.cs" />
+    <Compile Include="Interfaces\IHealerClassInformation.cs" />
+    <Compile Include="HealerClasses\Shaman.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TankHealerAssociation.cs" />

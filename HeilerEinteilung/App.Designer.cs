@@ -41,6 +41,8 @@
             this.tbHealerName = new System.Windows.Forms.TextBox();
             this.lbAvailableHealers = new System.Windows.Forms.ListBox();
             this.btnAddAssoc = new System.Windows.Forms.Button();
+            this.btnLoadAssocs = new System.Windows.Forms.Button();
+            this.btnSaveAssoc = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -171,11 +173,32 @@
             this.btnAddAssoc.UseVisualStyleBackColor = true;
             this.btnAddAssoc.Click += new System.EventHandler(this.btnAddAssoc_Click);
             // 
+            // btnLoadAssocs
+            // 
+            this.btnLoadAssocs.Location = new System.Drawing.Point(210, 651);
+            this.btnLoadAssocs.Name = "btnLoadAssocs";
+            this.btnLoadAssocs.Size = new System.Drawing.Size(117, 23);
+            this.btnLoadAssocs.TabIndex = 5;
+            this.btnLoadAssocs.Text = "Einteilung laden";
+            this.btnLoadAssocs.UseVisualStyleBackColor = true;
+            // 
+            // btnSaveAssoc
+            // 
+            this.btnSaveAssoc.Location = new System.Drawing.Point(333, 651);
+            this.btnSaveAssoc.Name = "btnSaveAssoc";
+            this.btnSaveAssoc.Size = new System.Drawing.Size(117, 23);
+            this.btnSaveAssoc.TabIndex = 6;
+            this.btnSaveAssoc.Text = "Einteilung speichern";
+            this.btnSaveAssoc.UseVisualStyleBackColor = true;
+            this.btnSaveAssoc.Click += new System.EventHandler(this.btnSaveAssoc_Click);
+            // 
             // App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(462, 686);
+            this.Controls.Add(this.btnSaveAssoc);
+            this.Controls.Add(this.btnLoadAssocs);
             this.Controls.Add(this.btnAddAssoc);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -203,6 +226,8 @@
         private System.Windows.Forms.Button btnRemoveTank;
         private System.Windows.Forms.Button btnRemoveHealer;
         private System.Windows.Forms.Button btnAddAssoc;
+        private System.Windows.Forms.Button btnLoadAssocs;
+        private System.Windows.Forms.Button btnSaveAssoc;
     }
 }
 
