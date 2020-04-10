@@ -98,12 +98,7 @@ namespace HeilerEinteilung
                 return;
             }
 
-            var assoc = new TankHealerAssociation()
-            {
-                HealerName = lbAvailableHealers.SelectedItem.ToString(),
-                TankName = lbAvailableTanks.SelectedItem.ToString(),
-                RowIndex = tankHealerAssociations.Count
-            };
+            var assoc = new TankHealerAssociation(this, lbAvailableHealers.SelectedItem.ToString(), lbAvailableTanks.SelectedItem.ToString(), tankHealerAssociations.Count);
 
             if (this.tankHealerAssociations.Contains(assoc))
             {
@@ -112,30 +107,85 @@ namespace HeilerEinteilung
             }
 
             this.tankHealerAssociations.Add(assoc);
+        }
 
-            var controls = assoc.Render();
-            controls.ForEach(control => { this.Controls.Add(control); });
+        private void RerenderAssocs()
+        {
+            var controlsCount = pnlAssocs.Controls.Count;
+            for (int controlIndex = 0; controlIndex < controlsCount; controlIndex++)
+            {
+                this.pnlAssocs.Controls.RemoveAt(0);
+            }
+
+            var assocIndex = 0;
+            tankHealerAssociations.ForEach(assoc =>
+            {
+                assoc.RowIndex = assocIndex;
+                assocIndex++;
+
+                assoc.Controls.ForEach(control =>
+                {
+                    this.pnlAssocs.Controls.Add(control);
+                });
+            });
         }
 
         private void btnAddAssoc_Click(object sender, EventArgs e)
         {
-            this.AddAssocRow();
+            AddAssocRow();
+            RerenderAssocs();
+        }
+
+        internal void RemoveAssoc(int rowIndex)
+        {
+            tankHealerAssociations.RemoveAt(rowIndex);
+            RerenderAssocs();
         }
 
         private void btnSaveAssoc_Click(object sender, EventArgs e)
         {
-            var saveFile = new SaveFileDialog();
+            var saveFile = new SaveFileDialog() { 
+                AddExtension = true, 
+                Filter = "Peters Heileinteilungen|*.pH",
+                RestoreDirectory = true
+            };
 
             if (saveFile.ShowDialog() == DialogResult.OK)
             {
                 using (StreamWriter writer = new StreamWriter(saveFile.OpenFile()))
                 {
-                    //tankHealerAssociations.ForEach(assoc =>
-                    //{
-                    //    writer.WriteLine($@"{assoc.TankName};{assoc.HealerName};{assoc.};");
-                    //});
+                    tankHealerAssociations.ForEach(assoc =>
+                    {
+                        writer.WriteLine($@"{assoc.TankName};{assoc.HealerName};{assoc.HealerClassName};{assoc.TankPrimary};{assoc.TankSecondary};{assoc.TankCustom}");
+                    });
                 }
             }
+        }
+
+        private void btnLoadAssocs_Click(object sender, EventArgs e)
+        {
+            var loadFile = new OpenFileDialog();
+
+            if (loadFile.ShowDialog() == DialogResult.OK)
+            {
+                string[] lines = File.ReadAllLines(loadFile.FileName, Encoding.UTF8);
+
+                tankHealerAssociations.Clear();
+
+                for (int lineIndex = 0; lineIndex < lines.Length; lineIndex++)
+                {
+                    string[] assocValues = lines[lineIndex].Split(';');
+
+                    if (assocValues.Length != 6)
+                    {
+                        continue;
+                    }
+
+                    tankHealerAssociations.Add(new TankHealerAssociation(this, assocValues[1], assocValues[0], assocValues[2], assocValues[3], assocValues[4], assocValues[5], lineIndex));
+                }
+            }
+
+            RerenderAssocs();
         }
     }
 }

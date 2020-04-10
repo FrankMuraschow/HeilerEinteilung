@@ -43,6 +43,7 @@
             this.btnAddAssoc = new System.Windows.Forms.Button();
             this.btnLoadAssocs = new System.Windows.Forms.Button();
             this.btnSaveAssoc = new System.Windows.Forms.Button();
+            this.pnlAssocs = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -68,6 +69,9 @@
             // lbAvailableTanks
             // 
             this.lbAvailableTanks.FormattingEnabled = true;
+            this.lbAvailableTanks.Items.AddRange(new object[] {
+            "T1",
+            "T2"});
             this.lbAvailableTanks.Location = new System.Drawing.Point(3, 100);
             this.lbAvailableTanks.Name = "lbAvailableTanks";
             this.lbAvailableTanks.Size = new System.Drawing.Size(201, 95);
@@ -158,6 +162,9 @@
             // lbAvailableHealers
             // 
             this.lbAvailableHealers.FormattingEnabled = true;
+            this.lbAvailableHealers.Items.AddRange(new object[] {
+            "H1",
+            "H2"});
             this.lbAvailableHealers.Location = new System.Drawing.Point(3, 100);
             this.lbAvailableHealers.Name = "lbAvailableHealers";
             this.lbAvailableHealers.Size = new System.Drawing.Size(201, 95);
@@ -181,6 +188,7 @@
             this.btnLoadAssocs.TabIndex = 5;
             this.btnLoadAssocs.Text = "Einteilung laden";
             this.btnLoadAssocs.UseVisualStyleBackColor = true;
+            this.btnLoadAssocs.Click += new System.EventHandler(this.btnLoadAssocs_Click);
             // 
             // btnSaveAssoc
             // 
@@ -192,11 +200,19 @@
             this.btnSaveAssoc.UseVisualStyleBackColor = true;
             this.btnSaveAssoc.Click += new System.EventHandler(this.btnSaveAssoc_Click);
             // 
+            // pnlAssocs
+            // 
+            this.pnlAssocs.Location = new System.Drawing.Point(12, 307);
+            this.pnlAssocs.Name = "pnlAssocs";
+            this.pnlAssocs.Size = new System.Drawing.Size(434, 338);
+            this.pnlAssocs.TabIndex = 7;
+            // 
             // App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(462, 686);
+            this.Controls.Add(this.pnlAssocs);
             this.Controls.Add(this.btnSaveAssoc);
             this.Controls.Add(this.btnLoadAssocs);
             this.Controls.Add(this.btnAddAssoc);
@@ -228,6 +244,7 @@
         private System.Windows.Forms.Button btnAddAssoc;
         private System.Windows.Forms.Button btnLoadAssocs;
         private System.Windows.Forms.Button btnSaveAssoc;
+        private System.Windows.Forms.Panel pnlAssocs;
     }
 }
 
