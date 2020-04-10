@@ -82,10 +82,14 @@
     </Compile>
     <Compile Include="HealerClass.cs" />
     <Compile Include="Interfaces\IHealerClassInformation.cs" />
+    <Compile Include="PlayerInformation.cs" />
+    <Compile Include="Players.cs" />
+    <Compile Include="PlayerType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TankHealerAssociation.cs" />
     <Compile Include="HealTarget.cs" />
+    <Compile Include="Util.cs" />
     <EmbeddedResource Include="App.resx">
       <DependentUpon>App.cs</DependentUpon>
     </EmbeddedResource>

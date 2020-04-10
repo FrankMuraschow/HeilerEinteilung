@@ -28,149 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tbTankName = new System.Windows.Forms.TextBox();
-            this.btnAddTank = new System.Windows.Forms.Button();
-            this.lbAvailableTanks = new System.Windows.Forms.ListBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnRemoveTank = new System.Windows.Forms.Button();
-            this.lblTanks = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnRemoveHealer = new System.Windows.Forms.Button();
-            this.lblHealers = new System.Windows.Forms.Label();
-            this.btnAddHealer = new System.Windows.Forms.Button();
-            this.tbHealerName = new System.Windows.Forms.TextBox();
-            this.lbAvailableHealers = new System.Windows.Forms.ListBox();
             this.btnAddAssoc = new System.Windows.Forms.Button();
-            this.btnLoadAssocs = new System.Windows.Forms.Button();
-            this.btnSaveAssoc = new System.Windows.Forms.Button();
             this.pnlAssocs = new System.Windows.Forms.Panel();
-            this.btnGenerateAssocText = new System.Windows.Forms.Button();
-            this.lblClipboard = new System.Windows.Forms.Label();
             this.tbBossName = new System.Windows.Forms.TextBox();
             this.lblBossName = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ladenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.speichernToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chatnachrichtInZwischenablageKopierenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // tbTankName
-            // 
-            this.tbTankName.Location = new System.Drawing.Point(3, 28);
-            this.tbTankName.Name = "tbTankName";
-            this.tbTankName.Size = new System.Drawing.Size(120, 20);
-            this.tbTankName.TabIndex = 1;
-            // 
-            // btnAddTank
-            // 
-            this.btnAddTank.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddTank.Location = new System.Drawing.Point(129, 24);
-            this.btnAddTank.Name = "btnAddTank";
-            this.btnAddTank.Size = new System.Drawing.Size(75, 26);
-            this.btnAddTank.TabIndex = 2;
-            this.btnAddTank.Text = "Hinzufügen";
-            this.btnAddTank.UseVisualStyleBackColor = true;
-            this.btnAddTank.Click += new System.EventHandler(this.btnAddTank_Click);
-            // 
-            // lbAvailableTanks
-            // 
-            this.lbAvailableTanks.FormattingEnabled = true;
-            this.lbAvailableTanks.Location = new System.Drawing.Point(3, 56);
-            this.lbAvailableTanks.Name = "lbAvailableTanks";
-            this.lbAvailableTanks.Size = new System.Drawing.Size(201, 95);
-            this.lbAvailableTanks.TabIndex = 0;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnRemoveTank);
-            this.panel1.Controls.Add(this.lblTanks);
-            this.panel1.Controls.Add(this.btnAddTank);
-            this.panel1.Controls.Add(this.tbTankName);
-            this.panel1.Controls.Add(this.lbAvailableTanks);
-            this.panel1.Location = new System.Drawing.Point(12, 61);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(214, 200);
-            this.panel1.TabIndex = 1;
-            // 
-            // btnRemoveTank
-            // 
-            this.btnRemoveTank.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveTank.Location = new System.Drawing.Point(6, 157);
-            this.btnRemoveTank.Name = "btnRemoveTank";
-            this.btnRemoveTank.Size = new System.Drawing.Size(75, 26);
-            this.btnRemoveTank.TabIndex = 4;
-            this.btnRemoveTank.Text = "Entfernen";
-            this.btnRemoveTank.UseVisualStyleBackColor = true;
-            this.btnRemoveTank.Click += new System.EventHandler(this.btnRemoveTank_Click);
-            // 
-            // lblTanks
-            // 
-            this.lblTanks.AutoSize = true;
-            this.lblTanks.Location = new System.Drawing.Point(3, 0);
-            this.lblTanks.Name = "lblTanks";
-            this.lblTanks.Size = new System.Drawing.Size(37, 13);
-            this.lblTanks.TabIndex = 3;
-            this.lblTanks.Text = "Tanks";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.btnRemoveHealer);
-            this.panel2.Controls.Add(this.lblHealers);
-            this.panel2.Controls.Add(this.btnAddHealer);
-            this.panel2.Controls.Add(this.tbHealerName);
-            this.panel2.Controls.Add(this.lbAvailableHealers);
-            this.panel2.Location = new System.Drawing.Point(232, 61);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(214, 199);
-            this.panel2.TabIndex = 3;
-            // 
-            // btnRemoveHealer
-            // 
-            this.btnRemoveHealer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveHealer.Location = new System.Drawing.Point(6, 159);
-            this.btnRemoveHealer.Name = "btnRemoveHealer";
-            this.btnRemoveHealer.Size = new System.Drawing.Size(75, 26);
-            this.btnRemoveHealer.TabIndex = 5;
-            this.btnRemoveHealer.Text = "Entfernen";
-            this.btnRemoveHealer.UseVisualStyleBackColor = true;
-            this.btnRemoveHealer.Click += new System.EventHandler(this.btnRemoveHealer_Click);
-            // 
-            // lblHealers
-            // 
-            this.lblHealers.AutoSize = true;
-            this.lblHealers.Location = new System.Drawing.Point(3, 0);
-            this.lblHealers.Name = "lblHealers";
-            this.lblHealers.Size = new System.Drawing.Size(34, 13);
-            this.lblHealers.TabIndex = 4;
-            this.lblHealers.Text = "Heiler";
-            // 
-            // btnAddHealer
-            // 
-            this.btnAddHealer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddHealer.Location = new System.Drawing.Point(129, 24);
-            this.btnAddHealer.Name = "btnAddHealer";
-            this.btnAddHealer.Size = new System.Drawing.Size(75, 26);
-            this.btnAddHealer.TabIndex = 2;
-            this.btnAddHealer.Text = "Hinzufügen";
-            this.btnAddHealer.UseVisualStyleBackColor = true;
-            this.btnAddHealer.Click += new System.EventHandler(this.btnAddHealer_Click);
-            // 
-            // tbHealerName
-            // 
-            this.tbHealerName.Location = new System.Drawing.Point(3, 28);
-            this.tbHealerName.Name = "tbHealerName";
-            this.tbHealerName.Size = new System.Drawing.Size(120, 20);
-            this.tbHealerName.TabIndex = 1;
-            // 
-            // lbAvailableHealers
-            // 
-            this.lbAvailableHealers.FormattingEnabled = true;
-            this.lbAvailableHealers.Location = new System.Drawing.Point(3, 58);
-            this.lbAvailableHealers.Name = "lbAvailableHealers";
-            this.lbAvailableHealers.Size = new System.Drawing.Size(201, 95);
-            this.lbAvailableHealers.TabIndex = 0;
             // 
             // btnAddAssoc
             // 
-            this.btnAddAssoc.Location = new System.Drawing.Point(12, 267);
+            this.btnAddAssoc.Location = new System.Drawing.Point(12, 71);
             this.btnAddAssoc.Name = "btnAddAssoc";
             this.btnAddAssoc.Size = new System.Drawing.Size(434, 23);
             this.btnAddAssoc.TabIndex = 4;
@@ -178,56 +51,16 @@
             this.btnAddAssoc.UseVisualStyleBackColor = true;
             this.btnAddAssoc.Click += new System.EventHandler(this.btnAddAssoc_Click);
             // 
-            // btnLoadAssocs
-            // 
-            this.btnLoadAssocs.Location = new System.Drawing.Point(210, 818);
-            this.btnLoadAssocs.Name = "btnLoadAssocs";
-            this.btnLoadAssocs.Size = new System.Drawing.Size(117, 23);
-            this.btnLoadAssocs.TabIndex = 5;
-            this.btnLoadAssocs.Text = "Einteilung laden";
-            this.btnLoadAssocs.UseVisualStyleBackColor = true;
-            this.btnLoadAssocs.Click += new System.EventHandler(this.btnLoadAssocs_Click);
-            // 
-            // btnSaveAssoc
-            // 
-            this.btnSaveAssoc.Location = new System.Drawing.Point(329, 818);
-            this.btnSaveAssoc.Name = "btnSaveAssoc";
-            this.btnSaveAssoc.Size = new System.Drawing.Size(117, 23);
-            this.btnSaveAssoc.TabIndex = 6;
-            this.btnSaveAssoc.Text = "Einteilung speichern";
-            this.btnSaveAssoc.UseVisualStyleBackColor = true;
-            this.btnSaveAssoc.Click += new System.EventHandler(this.btnSaveAssoc_Click);
-            // 
             // pnlAssocs
             // 
-            this.pnlAssocs.Location = new System.Drawing.Point(12, 307);
+            this.pnlAssocs.Location = new System.Drawing.Point(12, 100);
             this.pnlAssocs.Name = "pnlAssocs";
-            this.pnlAssocs.Size = new System.Drawing.Size(434, 505);
+            this.pnlAssocs.Size = new System.Drawing.Size(434, 741);
             this.pnlAssocs.TabIndex = 7;
-            // 
-            // btnGenerateAssocText
-            // 
-            this.btnGenerateAssocText.Location = new System.Drawing.Point(12, 818);
-            this.btnGenerateAssocText.Name = "btnGenerateAssocText";
-            this.btnGenerateAssocText.Size = new System.Drawing.Size(123, 23);
-            this.btnGenerateAssocText.TabIndex = 8;
-            this.btnGenerateAssocText.Text = "Einteilung generieren";
-            this.btnGenerateAssocText.UseVisualStyleBackColor = true;
-            this.btnGenerateAssocText.Click += new System.EventHandler(this.btnGenerateAssocText_Click);
-            // 
-            // lblClipboard
-            // 
-            this.lblClipboard.AutoSize = true;
-            this.lblClipboard.Location = new System.Drawing.Point(141, 823);
-            this.lblClipboard.Name = "lblClipboard";
-            this.lblClipboard.Size = new System.Drawing.Size(40, 13);
-            this.lblClipboard.TabIndex = 9;
-            this.lblClipboard.Text = "Kopiert";
-            this.lblClipboard.Visible = false;
             // 
             // tbBossName
             // 
-            this.tbBossName.Location = new System.Drawing.Point(54, 12);
+            this.tbBossName.Location = new System.Drawing.Point(57, 27);
             this.tbBossName.Name = "tbBossName";
             this.tbBossName.Size = new System.Drawing.Size(172, 20);
             this.tbBossName.TabIndex = 10;
@@ -235,11 +68,60 @@
             // lblBossName
             // 
             this.lblBossName.AutoSize = true;
-            this.lblBossName.Location = new System.Drawing.Point(9, 15);
+            this.lblBossName.Location = new System.Drawing.Point(9, 30);
             this.lblBossName.Name = "lblBossName";
             this.lblBossName.Size = new System.Drawing.Size(30, 13);
             this.lblBossName.TabIndex = 11;
             this.lblBossName.Text = "Boss";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dateiToolStripMenuItem,
+            this.generatorToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(462, 24);
+            this.menuStrip1.TabIndex = 12;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // dateiToolStripMenuItem
+            // 
+            this.dateiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ladenToolStripMenuItem,
+            this.speichernToolStripMenuItem});
+            this.dateiToolStripMenuItem.Name = "dateiToolStripMenuItem";
+            this.dateiToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.dateiToolStripMenuItem.Text = "Datei";
+            // 
+            // ladenToolStripMenuItem
+            // 
+            this.ladenToolStripMenuItem.Name = "ladenToolStripMenuItem";
+            this.ladenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ladenToolStripMenuItem.Text = "Laden";
+            this.ladenToolStripMenuItem.Click += new System.EventHandler(this.ladenToolStripMenuItem_Click);
+            // 
+            // speichernToolStripMenuItem
+            // 
+            this.speichernToolStripMenuItem.Name = "speichernToolStripMenuItem";
+            this.speichernToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.speichernToolStripMenuItem.Text = "Speichern";
+            this.speichernToolStripMenuItem.Click += new System.EventHandler(this.speichernToolStripMenuItem_Click);
+            // 
+            // generatorToolStripMenuItem
+            // 
+            this.generatorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.chatnachrichtInZwischenablageKopierenToolStripMenuItem});
+            this.generatorToolStripMenuItem.Name = "generatorToolStripMenuItem";
+            this.generatorToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.generatorToolStripMenuItem.Text = "Generator";
+            // 
+            // chatnachrichtInZwischenablageKopierenToolStripMenuItem
+            // 
+            this.chatnachrichtInZwischenablageKopierenToolStripMenuItem.Name = "chatnachrichtInZwischenablageKopierenToolStripMenuItem";
+            this.chatnachrichtInZwischenablageKopierenToolStripMenuItem.Size = new System.Drawing.Size(299, 22);
+            this.chatnachrichtInZwischenablageKopierenToolStripMenuItem.Text = "Chatnachricht in Zwischenablage kopieren";
+            this.chatnachrichtInZwischenablageKopierenToolStripMenuItem.Click += new System.EventHandler(this.chatnachrichtInZwischenablageKopierenToolStripMenuItem_Click);
             // 
             // App
             // 
@@ -248,46 +130,30 @@
             this.ClientSize = new System.Drawing.Size(462, 853);
             this.Controls.Add(this.lblBossName);
             this.Controls.Add(this.tbBossName);
-            this.Controls.Add(this.lblClipboard);
-            this.Controls.Add(this.btnGenerateAssocText);
             this.Controls.Add(this.pnlAssocs);
-            this.Controls.Add(this.btnSaveAssoc);
-            this.Controls.Add(this.btnLoadAssocs);
             this.Controls.Add(this.btnAddAssoc);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "App";
             this.Text = "WOW - Heiler Einteilung";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button btnAddTank;
-        private System.Windows.Forms.TextBox tbTankName;
-        private System.Windows.Forms.ListBox lbAvailableTanks;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lblTanks;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lblHealers;
-        private System.Windows.Forms.Button btnAddHealer;
-        private System.Windows.Forms.TextBox tbHealerName;
-        private System.Windows.Forms.ListBox lbAvailableHealers;
-        private System.Windows.Forms.Button btnRemoveTank;
-        private System.Windows.Forms.Button btnRemoveHealer;
         private System.Windows.Forms.Button btnAddAssoc;
-        private System.Windows.Forms.Button btnLoadAssocs;
-        private System.Windows.Forms.Button btnSaveAssoc;
         private System.Windows.Forms.Panel pnlAssocs;
-        private System.Windows.Forms.Button btnGenerateAssocText;
-        internal System.Windows.Forms.Label lblClipboard;
         private System.Windows.Forms.TextBox tbBossName;
         private System.Windows.Forms.Label lblBossName;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem dateiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ladenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem speichernToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem generatorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem chatnachrichtInZwischenablageKopierenToolStripMenuItem;
     }
 }
 
