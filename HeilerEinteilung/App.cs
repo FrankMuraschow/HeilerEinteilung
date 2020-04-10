@@ -14,6 +14,12 @@ namespace HeilerEinteilung
     public partial class App : Form
     {
         private List<TankHealerAssociation> tankHealerAssociations = new List<TankHealerAssociation>();
+        private Dictionary<HealerClass, string> healerColors = new Dictionary<HealerClass, string>()
+        {
+            { HealerClass.Druide, "ffff7c0a" },
+            { HealerClass.Priester, "ffffffff" },
+            { HealerClass.Schamane, "fff48cba" },
+        };
 
         public App()
         {
@@ -36,6 +42,7 @@ namespace HeilerEinteilung
             }
 
             availableTanks.Add(newTank);
+            tbTankName.Text = "";
         }
 
         private void btnRemoveTank_Click(object sender, EventArgs e)
@@ -66,6 +73,7 @@ namespace HeilerEinteilung
             }
 
             availableHealers.Add(newHealer);
+            tbHealerName.Text = "";
         }
 
         private void btnRemoveHealer_Click(object sender, EventArgs e)
@@ -111,6 +119,7 @@ namespace HeilerEinteilung
 
         private void RerenderAssocs()
         {
+            lblClipboard.Visible = false;
             var controlsCount = pnlAssocs.Controls.Count;
             for (int controlIndex = 0; controlIndex < controlsCount; controlIndex++)
             {
@@ -142,10 +151,19 @@ namespace HeilerEinteilung
             RerenderAssocs();
         }
 
+        private string getHealerClassColor(HealerClass healerClass)
+        {
+            string color = "";
+            healerColors.TryGetValue(healerClass, out color);
+
+            return color;
+        }
+
         private void btnSaveAssoc_Click(object sender, EventArgs e)
         {
-            var saveFile = new SaveFileDialog() { 
-                AddExtension = true, 
+            var saveFile = new SaveFileDialog()
+            {
+                AddExtension = true,
                 Filter = "Peters Heileinteilungen|*.pH",
                 RestoreDirectory = true
             };
@@ -156,7 +174,7 @@ namespace HeilerEinteilung
                 {
                     tankHealerAssociations.ForEach(assoc =>
                     {
-                        writer.WriteLine($@"{assoc.TankName};{assoc.HealerName};{assoc.HealerClassName};{assoc.TankPrimary};{assoc.TankSecondary};{assoc.TankCustom}");
+                        writer.WriteLine($@"{assoc.TankName};{assoc.HealerName};{assoc.HealerClassName};{assoc.TankPrimary};{assoc.TankSecondary};{assoc.TankCustom};{tbBossName.Text}");
                     });
                 }
             }
@@ -164,7 +182,10 @@ namespace HeilerEinteilung
 
         private void btnLoadAssocs_Click(object sender, EventArgs e)
         {
-            var loadFile = new OpenFileDialog();
+            var loadFile = new OpenFileDialog()
+            {
+                Filter = "Peters Heileinteilungen|*.pH"
+            };
 
             if (loadFile.ShowDialog() == DialogResult.OK)
             {
@@ -176,16 +197,63 @@ namespace HeilerEinteilung
                 {
                     string[] assocValues = lines[lineIndex].Split(';');
 
-                    if (assocValues.Length != 6)
+                    if (assocValues.Length < 6)
                     {
                         continue;
                     }
 
-                    tankHealerAssociations.Add(new TankHealerAssociation(this, assocValues[1], assocValues[0], assocValues[2], assocValues[3], assocValues[4], assocValues[5], lineIndex));
+                    var tankName = assocValues[0];
+                    var healerName = assocValues[1];
+                    var bossName = assocValues.Length == 7 ? assocValues[6] : "";
+
+                    if (lbAvailableTanks.Items.IndexOf(tankName) == -1)
+                    {
+                        lbAvailableTanks.Items.Add(tankName);
+                    }
+
+                    if (lbAvailableHealers.Items.IndexOf(healerName) == -1)
+                    {
+                        lbAvailableHealers.Items.Add(healerName);
+                    }
+
+                    tbBossName.Text = bossName;
+                    tankHealerAssociations.Add(new TankHealerAssociation(this, healerName, tankName, assocValues[2], assocValues[3], assocValues[4], assocValues[5], lineIndex));
                 }
             }
 
             RerenderAssocs();
+        }
+
+        private void btnGenerateAssocText_Click(object sender, EventArgs e)
+        {
+            var output = $"{tbBossName.Text}{Environment.NewLine}";
+            output += $"{Environment.NewLine}";
+            tankHealerAssociations.ForEach(assoc =>
+            {
+                if (!string.IsNullOrEmpty(assoc.HealerClassName))
+                {
+                    HealerClass currentClass = (HealerClass)Enum.Parse(typeof(HealerClass), assoc.HealerClassName);
+                    output += $"|c{getHealerClassColor(currentClass)}{assoc.HealerName}|r    {assoc.TankName} ({assoc.TankPrimary})";
+                } else
+                {
+                    output += $"|cffffffff{assoc.HealerName}|r    {assoc.TankName} ({assoc.TankPrimary})";
+                }
+
+                if (!string.IsNullOrEmpty(assoc.TankSecondary))
+                {
+                    output += $" / {assoc.TankSecondary}";
+                }
+
+                if (!string.IsNullOrEmpty(assoc.TankCustom))
+                {
+                    output += $" / {assoc.TankCustom}";
+                }
+
+                output += Environment.NewLine;
+            });
+
+            lblClipboard.Visible = true;
+            Clipboard.SetText(output);
         }
     }
 }

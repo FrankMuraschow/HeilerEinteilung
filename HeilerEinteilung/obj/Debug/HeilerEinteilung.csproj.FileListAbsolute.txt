@@ -7,3 +7,7 @@ D:\P\HeilerEInteilung\HeilerEinteilung\HeilerEinteilung\obj\Debug\HeilerEinteilu
 D:\P\HeilerEInteilung\HeilerEinteilung\HeilerEinteilung\obj\Debug\HeilerEinteilung.exe
 D:\P\HeilerEInteilung\HeilerEinteilung\HeilerEinteilung\obj\Debug\HeilerEinteilung.pdb
 D:\P\HeilerEInteilung\HeilerEinteilung\HeilerEinteilung\obj\Debug\HeilerEinteilung.App.resources
+D:\P\HeilerEInteilung\HeilerEinteilung\HeilerEinteilung\bin\Debug\HeilerEinteilung.exe.manifest
+D:\P\HeilerEInteilung\HeilerEinteilung\HeilerEinteilung\bin\Debug\HeilerEinteilung.application
+D:\P\HeilerEInteilung\HeilerEinteilung\HeilerEinteilung\obj\Debug\HeilerEinteilung.exe.manifest
+D:\P\HeilerEInteilung\HeilerEinteilung\HeilerEinteilung\obj\Debug\HeilerEinteilung.application

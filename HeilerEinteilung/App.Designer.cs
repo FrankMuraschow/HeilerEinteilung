@@ -44,13 +44,17 @@
             this.btnLoadAssocs = new System.Windows.Forms.Button();
             this.btnSaveAssoc = new System.Windows.Forms.Button();
             this.pnlAssocs = new System.Windows.Forms.Panel();
+            this.btnGenerateAssocText = new System.Windows.Forms.Button();
+            this.lblClipboard = new System.Windows.Forms.Label();
+            this.tbBossName = new System.Windows.Forms.TextBox();
+            this.lblBossName = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbTankName
             // 
-            this.tbTankName.Location = new System.Drawing.Point(3, 40);
+            this.tbTankName.Location = new System.Drawing.Point(3, 28);
             this.tbTankName.Name = "tbTankName";
             this.tbTankName.Size = new System.Drawing.Size(120, 20);
             this.tbTankName.TabIndex = 1;
@@ -58,7 +62,7 @@
             // btnAddTank
             // 
             this.btnAddTank.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddTank.Location = new System.Drawing.Point(129, 36);
+            this.btnAddTank.Location = new System.Drawing.Point(129, 24);
             this.btnAddTank.Name = "btnAddTank";
             this.btnAddTank.Size = new System.Drawing.Size(75, 26);
             this.btnAddTank.TabIndex = 2;
@@ -69,10 +73,7 @@
             // lbAvailableTanks
             // 
             this.lbAvailableTanks.FormattingEnabled = true;
-            this.lbAvailableTanks.Items.AddRange(new object[] {
-            "T1",
-            "T2"});
-            this.lbAvailableTanks.Location = new System.Drawing.Point(3, 100);
+            this.lbAvailableTanks.Location = new System.Drawing.Point(3, 56);
             this.lbAvailableTanks.Name = "lbAvailableTanks";
             this.lbAvailableTanks.Size = new System.Drawing.Size(201, 95);
             this.lbAvailableTanks.TabIndex = 0;
@@ -84,15 +85,15 @@
             this.panel1.Controls.Add(this.btnAddTank);
             this.panel1.Controls.Add(this.tbTankName);
             this.panel1.Controls.Add(this.lbAvailableTanks);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(12, 61);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(214, 239);
+            this.panel1.Size = new System.Drawing.Size(214, 200);
             this.panel1.TabIndex = 1;
             // 
             // btnRemoveTank
             // 
             this.btnRemoveTank.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveTank.Location = new System.Drawing.Point(6, 201);
+            this.btnRemoveTank.Location = new System.Drawing.Point(6, 157);
             this.btnRemoveTank.Name = "btnRemoveTank";
             this.btnRemoveTank.Size = new System.Drawing.Size(75, 26);
             this.btnRemoveTank.TabIndex = 4;
@@ -103,7 +104,7 @@
             // lblTanks
             // 
             this.lblTanks.AutoSize = true;
-            this.lblTanks.Location = new System.Drawing.Point(3, 12);
+            this.lblTanks.Location = new System.Drawing.Point(3, 0);
             this.lblTanks.Name = "lblTanks";
             this.lblTanks.Size = new System.Drawing.Size(37, 13);
             this.lblTanks.TabIndex = 3;
@@ -116,15 +117,15 @@
             this.panel2.Controls.Add(this.btnAddHealer);
             this.panel2.Controls.Add(this.tbHealerName);
             this.panel2.Controls.Add(this.lbAvailableHealers);
-            this.panel2.Location = new System.Drawing.Point(232, 12);
+            this.panel2.Location = new System.Drawing.Point(232, 61);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(214, 239);
+            this.panel2.Size = new System.Drawing.Size(214, 199);
             this.panel2.TabIndex = 3;
             // 
             // btnRemoveHealer
             // 
             this.btnRemoveHealer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveHealer.Location = new System.Drawing.Point(6, 201);
+            this.btnRemoveHealer.Location = new System.Drawing.Point(6, 159);
             this.btnRemoveHealer.Name = "btnRemoveHealer";
             this.btnRemoveHealer.Size = new System.Drawing.Size(75, 26);
             this.btnRemoveHealer.TabIndex = 5;
@@ -135,7 +136,7 @@
             // lblHealers
             // 
             this.lblHealers.AutoSize = true;
-            this.lblHealers.Location = new System.Drawing.Point(3, 12);
+            this.lblHealers.Location = new System.Drawing.Point(3, 0);
             this.lblHealers.Name = "lblHealers";
             this.lblHealers.Size = new System.Drawing.Size(34, 13);
             this.lblHealers.TabIndex = 4;
@@ -144,7 +145,7 @@
             // btnAddHealer
             // 
             this.btnAddHealer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddHealer.Location = new System.Drawing.Point(129, 36);
+            this.btnAddHealer.Location = new System.Drawing.Point(129, 24);
             this.btnAddHealer.Name = "btnAddHealer";
             this.btnAddHealer.Size = new System.Drawing.Size(75, 26);
             this.btnAddHealer.TabIndex = 2;
@@ -154,7 +155,7 @@
             // 
             // tbHealerName
             // 
-            this.tbHealerName.Location = new System.Drawing.Point(3, 40);
+            this.tbHealerName.Location = new System.Drawing.Point(3, 28);
             this.tbHealerName.Name = "tbHealerName";
             this.tbHealerName.Size = new System.Drawing.Size(120, 20);
             this.tbHealerName.TabIndex = 1;
@@ -162,17 +163,14 @@
             // lbAvailableHealers
             // 
             this.lbAvailableHealers.FormattingEnabled = true;
-            this.lbAvailableHealers.Items.AddRange(new object[] {
-            "H1",
-            "H2"});
-            this.lbAvailableHealers.Location = new System.Drawing.Point(3, 100);
+            this.lbAvailableHealers.Location = new System.Drawing.Point(3, 58);
             this.lbAvailableHealers.Name = "lbAvailableHealers";
             this.lbAvailableHealers.Size = new System.Drawing.Size(201, 95);
             this.lbAvailableHealers.TabIndex = 0;
             // 
             // btnAddAssoc
             // 
-            this.btnAddAssoc.Location = new System.Drawing.Point(12, 278);
+            this.btnAddAssoc.Location = new System.Drawing.Point(12, 267);
             this.btnAddAssoc.Name = "btnAddAssoc";
             this.btnAddAssoc.Size = new System.Drawing.Size(434, 23);
             this.btnAddAssoc.TabIndex = 4;
@@ -182,7 +180,7 @@
             // 
             // btnLoadAssocs
             // 
-            this.btnLoadAssocs.Location = new System.Drawing.Point(210, 651);
+            this.btnLoadAssocs.Location = new System.Drawing.Point(210, 818);
             this.btnLoadAssocs.Name = "btnLoadAssocs";
             this.btnLoadAssocs.Size = new System.Drawing.Size(117, 23);
             this.btnLoadAssocs.TabIndex = 5;
@@ -192,7 +190,7 @@
             // 
             // btnSaveAssoc
             // 
-            this.btnSaveAssoc.Location = new System.Drawing.Point(333, 651);
+            this.btnSaveAssoc.Location = new System.Drawing.Point(329, 818);
             this.btnSaveAssoc.Name = "btnSaveAssoc";
             this.btnSaveAssoc.Size = new System.Drawing.Size(117, 23);
             this.btnSaveAssoc.TabIndex = 6;
@@ -204,14 +202,54 @@
             // 
             this.pnlAssocs.Location = new System.Drawing.Point(12, 307);
             this.pnlAssocs.Name = "pnlAssocs";
-            this.pnlAssocs.Size = new System.Drawing.Size(434, 338);
+            this.pnlAssocs.Size = new System.Drawing.Size(434, 505);
             this.pnlAssocs.TabIndex = 7;
+            // 
+            // btnGenerateAssocText
+            // 
+            this.btnGenerateAssocText.Location = new System.Drawing.Point(12, 818);
+            this.btnGenerateAssocText.Name = "btnGenerateAssocText";
+            this.btnGenerateAssocText.Size = new System.Drawing.Size(123, 23);
+            this.btnGenerateAssocText.TabIndex = 8;
+            this.btnGenerateAssocText.Text = "Einteilung generieren";
+            this.btnGenerateAssocText.UseVisualStyleBackColor = true;
+            this.btnGenerateAssocText.Click += new System.EventHandler(this.btnGenerateAssocText_Click);
+            // 
+            // lblClipboard
+            // 
+            this.lblClipboard.AutoSize = true;
+            this.lblClipboard.Location = new System.Drawing.Point(141, 823);
+            this.lblClipboard.Name = "lblClipboard";
+            this.lblClipboard.Size = new System.Drawing.Size(40, 13);
+            this.lblClipboard.TabIndex = 9;
+            this.lblClipboard.Text = "Kopiert";
+            this.lblClipboard.Visible = false;
+            // 
+            // tbBossName
+            // 
+            this.tbBossName.Location = new System.Drawing.Point(54, 12);
+            this.tbBossName.Name = "tbBossName";
+            this.tbBossName.Size = new System.Drawing.Size(172, 20);
+            this.tbBossName.TabIndex = 10;
+            // 
+            // lblBossName
+            // 
+            this.lblBossName.AutoSize = true;
+            this.lblBossName.Location = new System.Drawing.Point(9, 15);
+            this.lblBossName.Name = "lblBossName";
+            this.lblBossName.Size = new System.Drawing.Size(30, 13);
+            this.lblBossName.TabIndex = 11;
+            this.lblBossName.Text = "Boss";
             // 
             // App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(462, 686);
+            this.ClientSize = new System.Drawing.Size(462, 853);
+            this.Controls.Add(this.lblBossName);
+            this.Controls.Add(this.tbBossName);
+            this.Controls.Add(this.lblClipboard);
+            this.Controls.Add(this.btnGenerateAssocText);
             this.Controls.Add(this.pnlAssocs);
             this.Controls.Add(this.btnSaveAssoc);
             this.Controls.Add(this.btnLoadAssocs);
@@ -225,6 +263,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -245,6 +284,10 @@
         private System.Windows.Forms.Button btnLoadAssocs;
         private System.Windows.Forms.Button btnSaveAssoc;
         private System.Windows.Forms.Panel pnlAssocs;
+        private System.Windows.Forms.Button btnGenerateAssocText;
+        internal System.Windows.Forms.Label lblClipboard;
+        private System.Windows.Forms.TextBox tbBossName;
+        private System.Windows.Forms.Label lblBossName;
     }
 }
 

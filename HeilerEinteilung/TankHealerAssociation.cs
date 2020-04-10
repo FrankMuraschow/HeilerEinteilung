@@ -28,13 +28,13 @@ namespace HeilerEinteilung
             set
             {
                 _rowIndex = value;
-                lblTank.Location = new System.Drawing.Point(0, 10 + (value * 32));
-                lblHealer.Location = new System.Drawing.Point(70, 10 + (value * 32));
-                cbHealerTypeSelection.Location = new System.Drawing.Point(145, 10 + (value * 32));
-                cbTankTypeSelectionPrimary.Location = new System.Drawing.Point(240, 10 + (value * 32));
-                cbTankTypeSelectionSecondary.Location = new System.Drawing.Point(295, 10 + (value * 32));
-                tbTankTypeSelectionCustom.Location = new System.Drawing.Point(350, 10 + (value * 32));
-                btnDeleteRow.Location = new System.Drawing.Point(415, 13 + (value * 32));
+                lblTank.Location = new System.Drawing.Point(0, 5 + (value * 32));
+                lblHealer.Location = new System.Drawing.Point(70, 5 + (value * 32));
+                cbHealerTypeSelection.Location = new System.Drawing.Point(145, 5 + (value * 32));
+                cbTankTypeSelectionPrimary.Location = new System.Drawing.Point(240, 5 + (value * 32));
+                cbTankTypeSelectionSecondary.Location = new System.Drawing.Point(295, 5 + (value * 32));
+                tbTankTypeSelectionCustom.Location = new System.Drawing.Point(350, 5 + (value * 32));
+                btnDeleteRow.Location = new System.Drawing.Point(415, 8 + (value * 32));
             }
         }
         internal IHealerClassInformation healerClassInfo;
@@ -115,9 +115,9 @@ namespace HeilerEinteilung
             // Set values
             lblTank.Text = TankName;
             lblHealer.Text = HealerName;
-            cbHealerTypeSelection.SelectedItem = HealerClassName;
-            cbTankTypeSelectionPrimary.SelectedItem = TankPrimary;
-            cbTankTypeSelectionSecondary.SelectedItem = TankSecondary;
+            cbHealerTypeSelection.SelectedIndex = cbHealerTypeSelection.FindStringExact(HealerClassName);
+            cbTankTypeSelectionPrimary.SelectedIndex = cbTankTypeSelectionPrimary.FindStringExact(TankPrimary);
+            cbTankTypeSelectionSecondary.SelectedIndex = cbTankTypeSelectionSecondary.FindStringExact(TankSecondary);
             tbTankTypeSelectionCustom.Text = TankCustom;
 
             cbHealerTypeSelection.SelectedIndexChanged += CbHealerTypeSelection_SelectedIndexChanged;
@@ -139,26 +139,31 @@ namespace HeilerEinteilung
 
         private void TbTankTypeSelectionCustom_TextChanged(object sender, EventArgs e)
         {
+            TargetApp.lblClipboard.Visible = false;
             TankCustom = tbTankTypeSelectionCustom.Text;
         }
 
         private void CbTankTypeSelectionSecondary_SelectedIndexChanged(object sender, EventArgs e)
         {
+            TargetApp.lblClipboard.Visible = false;
             TankSecondary = cbTankTypeSelectionSecondary.Text;
         }
 
         private void CbTankTypeSelectionPrimary_SelectedIndexChanged(object sender, EventArgs e)
         {
+            TargetApp.lblClipboard.Visible = false;
             TankPrimary = cbTankTypeSelectionPrimary.Text;
         }
 
         private void CbHealerTypeSelection_SelectedIndexChanged(object sender, EventArgs e)
         {
+            TargetApp.lblClipboard.Visible = false;
             HealerClassName = cbHealerTypeSelection.Text;
         }
 
         private void BtnDeleteRow_Click(object sender, EventArgs e)
         {
+            TargetApp.lblClipboard.Visible = false;
             this.TargetApp.RemoveAssoc(this.RowIndex);
         }
 
