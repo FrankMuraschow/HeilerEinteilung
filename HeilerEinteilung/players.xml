@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Players xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <PlayerInformations>
+    <PlayerInformation PlayerType="Healer" Name="Naito" PlayerClass="Priester" />
+    <PlayerInformation PlayerType="Healer" Name="Träne" PlayerClass="Druide" />
+	<PlayerInformation PlayerType="Healer" Name="Xantris" PlayerClass="Druide" />
+    <PlayerInformation PlayerType="Healer" Name="Leber" PlayerClass="Schamane" />
+    <PlayerInformation PlayerType="Healer" Name="Thalyn" PlayerClass="Priester" />
+	<PlayerInformation PlayerType="Healer" Name="Lorth" PlayerClass="Priester" />
+	<PlayerInformation PlayerType="Healer" Name="Fammy" PlayerClass="Priester" />
+	<PlayerInformation PlayerType="Healer" Name="Danny" PlayerClass="Priester" />
+	<PlayerInformation PlayerType="Healer" Name="Ilsegrim" PlayerClass="Priester" />
+	<PlayerInformation PlayerType="Healer" Name="Sunshine" PlayerClass="Priester" />
+	<PlayerInformation PlayerType="Healer" Name="Syraja" PlayerClass="Schamane" />
+	<PlayerInformation PlayerType="Healer" Name="Kazuha" PlayerClass="Schamane" />
+	<PlayerInformation PlayerType="Healer" Name="Hokkabatz" PlayerClass="Schamane" />
+	<PlayerInformation PlayerType="Healer" Name="Zchaoll" PlayerClass="Schamane" />
+	<PlayerInformation PlayerType="Tank" Name="Grimmbear" PlayerClass="Krieger" />
+	<PlayerInformation PlayerType="Tank" Name="Metaxa" PlayerClass="Krieger" />
+	<PlayerInformation PlayerType="Tank" Name="Slimjay" PlayerClass="Krieger" />
+	<PlayerInformation PlayerType="Tank" Name="Gnompresse" PlayerClass="Krieger" />
+	<PlayerInformation PlayerType="Tank" Name="Iskador" PlayerClass="Druide" />
+	<PlayerInformation PlayerType="Tank" Name="Mavarius" PlayerClass="Druide" />
+  </PlayerInformations>
+</Players>
