@@ -16,17 +16,17 @@ namespace HeilerEinteilung
         public string Name;
 
         [XmlAttribute]
-        public HealerClass HealerClass;
+        public PlayerClass PlayerClass;
 
         public PlayerInformation()
         {
         }
 
-        public PlayerInformation(PlayerType playerType, string name, HealerClass healerClass)
+        public PlayerInformation(PlayerType playerType, string name, PlayerClass playerClass)
         {
             PlayerType = playerType;
             Name = name;
-            HealerClass = healerClass;
+            PlayerClass = playerClass;
         }
     }
 }

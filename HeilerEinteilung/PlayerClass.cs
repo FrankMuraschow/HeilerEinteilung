@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace HeilerEinteilung
 {
-    public enum HealerClass
+    public enum PlayerClass
     {
-        Schamane,
         Druide,
+        Krieger,
         Priester,
-        None
+        Schamane
     }
 }

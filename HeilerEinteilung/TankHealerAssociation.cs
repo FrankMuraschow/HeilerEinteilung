@@ -12,9 +12,8 @@ namespace HeilerEinteilung
     internal class TankHealerAssociation
     {
         internal App TargetApp;
-        internal string HealerName;
-        internal string TankName;
-        internal string HealerClassName;
+        internal PlayerInformation PlayerHealer;
+        internal PlayerInformation PlayerTank;
         internal string TankPrimary;
         internal string TankSecondary;
         internal string TankCustom;
@@ -32,9 +31,9 @@ namespace HeilerEinteilung
                 cbHealers.Location = new System.Drawing.Point(10, 6 + (value * 32));
                 cbTanks.Location = new System.Drawing.Point(80, 6 + (value * 32));
                 lblHealerClass.Location = new System.Drawing.Point(155, 8 + (value * 32));
-                cbTankTypeSelectionPrimary.Location = new System.Drawing.Point(240, 6 + (value * 32));
-                cbTankTypeSelectionSecondary.Location = new System.Drawing.Point(295, 6 + (value * 32));
-                tbTankTypeSelectionCustom.Location = new System.Drawing.Point(350, 6 + (value * 32));
+                cbTankTypeSelectionPrimary.Location = new System.Drawing.Point(219, 6 + (value * 32));
+                cbTankTypeSelectionSecondary.Location = new System.Drawing.Point(281, 6 + (value * 32));
+                tbTankTypeSelectionCustom.Location = new System.Drawing.Point(343, 6 + (value * 32));
                 btnDeleteRow.Location = new System.Drawing.Point(405, 8 + (value * 32));
                 pnlColor.Location = new System.Drawing.Point(0, 0 + (value * 32));
             }
@@ -54,22 +53,22 @@ namespace HeilerEinteilung
 
         internal Label lblHealerClass = new Label()
         {
-            Size = new System.Drawing.Size(80, 20)
+            Size = new System.Drawing.Size(60, 20)
         };
 
         internal ComboBox cbTankTypeSelectionPrimary = new ComboBox()
         {
-            Size = new System.Drawing.Size(50, 32)
+            Size = new System.Drawing.Size(57, 32)
         };
 
         internal ComboBox cbTankTypeSelectionSecondary = new ComboBox()
         {
-            Size = new System.Drawing.Size(50, 32)
+            Size = new System.Drawing.Size(57, 32)
         };
 
         internal TextBox tbTankTypeSelectionCustom = new TextBox()
         {
-            Size = new System.Drawing.Size(50, 32)
+            Size = new System.Drawing.Size(57, 32)
         };
 
         internal Panel pnlColor = new Panel()
@@ -92,13 +91,12 @@ namespace HeilerEinteilung
             setControls();
         }
 
-        internal TankHealerAssociation(App app, string healerName, string tankName, string healerClassName, string tankPrimary, string tankSecondary, string tankCustom, int rowIndex)
+        internal TankHealerAssociation(App app, string healerName, string tankName, string tankPrimary, string tankSecondary, string tankCustom, int rowIndex)
         {
             TargetApp = app;
-            HealerName = healerName;
-            TankName = tankName;
+            PlayerHealer = TargetApp.Players.PlayerInformations.FirstOrDefault(pInfo => { return pInfo.Name == healerName; });
+            PlayerTank = TargetApp.Players.PlayerInformations.FirstOrDefault(pInfo => { return pInfo.Name == tankName; });
             RowIndex = rowIndex;
-            HealerClassName = healerClassName;
             TankPrimary = tankPrimary;
             TankSecondary = tankSecondary;
             TankCustom = tankCustom;
@@ -107,6 +105,9 @@ namespace HeilerEinteilung
 
         private List<Control> setControls()
         {
+            cbTankTypeSelectionPrimary.Items.Add("");
+            cbTankTypeSelectionSecondary.Items.Add("");
+
             var healTargetTypes = Enum.GetValues(typeof(HealTarget));
             for (var i = 0; i < healTargetTypes.Length; i++)
             {
@@ -130,10 +131,20 @@ namespace HeilerEinteilung
 
             var healers = healersInformation.Select(playerInformation => { return playerInformation.Name; });
 
+            cbTanks.Items.Add("");
             cbTanks.Items.AddRange(tanks.ToArray());
+
             cbHealers.Items.AddRange(healers.ToArray());
-            cbTanks.SelectedIndex = cbTanks.FindStringExact(TankName);
-            cbHealers.SelectedIndex = cbHealers.FindStringExact(HealerName);
+
+            if (PlayerTank != null)
+            {
+                cbTanks.SelectedIndex = cbTanks.FindStringExact(PlayerTank.Name);
+            }
+
+            if (PlayerHealer != null)
+            {
+                cbHealers.SelectedIndex = cbHealers.FindStringExact(PlayerHealer.Name);
+            }
 
             setHealerClass();
 
@@ -163,38 +174,30 @@ namespace HeilerEinteilung
 
         private void CbTanks_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TankName = cbTanks.Text;
+            PlayerTank = TargetApp.Players.PlayerInformations.FirstOrDefault(pInfo => { return pInfo.Name == cbTanks.Text; });
         }
 
         private void CbHealers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            HealerName = cbHealers.Text;
+            PlayerHealer = TargetApp.Players.PlayerInformations.FirstOrDefault(pInfo => { return pInfo.Name == cbHealers.Text; });
             setHealerClass();
         }
 
         private void setHealerClass()
         {
-            var healersInformation = TargetApp.Players.PlayerInformations.Where(playerInformation =>
+            if (PlayerHealer == null)
             {
-                return playerInformation.PlayerType == PlayerType.Healer;
-            });
-
-            if (!string.IsNullOrEmpty(HealerName))
-            {
-                var healer = healersInformation.FirstOrDefault(playerInformation =>
-                {
-                    return playerInformation.Name == HealerName;
-                });
-
-                HealerClassName = healer.HealerClass.ToString();
-                lblHealerClass.Text = HealerClassName;
-
-                var colorString = TargetApp.GetHealerClassColor(healer.HealerClass);
-                Color healerColor = Util.HexToColor(colorString.Substring(2,6));
-
-                pnlColor.BackColor = healerColor;
-                lblHealerClass.BackColor = healerColor;
+                return;
             }
+
+            lblHealerClass.Text = PlayerHealer.PlayerClass.ToString();
+
+            var colorString = TargetApp.GetHealerClassColor(PlayerHealer.PlayerClass);
+            Color healerColor = Util.HexToColor(colorString.Substring(2, 6));
+
+            pnlColor.BackColor = healerColor;
+            lblHealerClass.BackColor = healerColor;
+
         }
 
         private void TbTankTypeSelectionCustom_TextChanged(object sender, EventArgs e)
@@ -221,14 +224,14 @@ namespace HeilerEinteilung
         {
             TankHealerAssociation y = other as TankHealerAssociation;
 
-            var currentTankName = TankName;
-            var currentHealerName = HealerName;
+            var currentTankName = PlayerTank;
+            var currentHealerName = PlayerHealer;
 
-            var otherTankName = y.TankName;
-            var otherHealerName = y.HealerName;
+            var otherTankName = y.PlayerTank;
+            var otherHealerName = y.PlayerHealer;
 
 
-            return TankName == y.TankName && HealerName == y.HealerName;
+            return PlayerTank == y.PlayerTank && PlayerHealer == y.PlayerHealer;
         }
     }
 }

@@ -16,11 +16,12 @@ namespace HeilerEinteilung
     {
         internal Players Players = new Players();
         private List<TankHealerAssociation> tankHealerAssociations = new List<TankHealerAssociation>();
-        private Dictionary<HealerClass, string> healerColors = new Dictionary<HealerClass, string>()
+        private Dictionary<PlayerClass, string> healerColors = new Dictionary<PlayerClass, string>()
         {
-            { HealerClass.Druide, "ffff7c0a" },
-            { HealerClass.Priester, "ffffffff" },
-            { HealerClass.Schamane, "fff48cba" },
+            { PlayerClass.Druide, "ffff7c0a" },
+            { PlayerClass.Priester, "ffffffff" },
+            { PlayerClass.Schamane, "fff48cba" },
+            { PlayerClass.Krieger, "ffc69b6d" }
         };
 
         public App()
@@ -72,7 +73,7 @@ namespace HeilerEinteilung
             RerenderAssocs();
         }
 
-        internal string GetHealerClassColor(HealerClass healerClass)
+        internal string GetHealerClassColor(PlayerClass healerClass)
         {
             string color = "";
             healerColors.TryGetValue(healerClass, out color);
@@ -82,18 +83,18 @@ namespace HeilerEinteilung
 
         private void btnSaveAssoc_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnLoadAssocs_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnGenerateAssocText_Click(object sender, EventArgs e)
         {
-           
-    }
+
+        }
 
         private void chatnachrichtInZwischenablageKopierenToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -101,26 +102,12 @@ namespace HeilerEinteilung
             output += $"{Environment.NewLine}";
             tankHealerAssociations.ForEach(assoc =>
             {
-                if (!string.IsNullOrEmpty(assoc.HealerClassName))
-                {
-                    HealerClass currentClass = (HealerClass)Enum.Parse(typeof(HealerClass), assoc.HealerClassName);
-                    output += $"|c{GetHealerClassColor(currentClass)}{assoc.HealerName}|r    {assoc.TankName} ({assoc.TankPrimary})";
-                }
-                else
-                {
-                    output += $"|cffffffff{assoc.HealerName}|r    {assoc.TankName} ({assoc.TankPrimary})";
-                }
+                var healTargetString = assoc.PlayerTank != null ? $"    |c{GetHealerClassColor(assoc.PlayerTank.PlayerClass)}{assoc.PlayerTank.Name}|r " : "   ";
+                healTargetString += !string.IsNullOrEmpty(assoc.TankPrimary) ? $"{assoc.TankPrimary}" : "";
+                healTargetString += !string.IsNullOrEmpty(assoc.TankSecondary) ? $" / {assoc.TankSecondary}" : "";
+                healTargetString += !string.IsNullOrEmpty(assoc.TankCustom) ? $" / {assoc.TankCustom}" : "";
 
-                if (!string.IsNullOrEmpty(assoc.TankSecondary))
-                {
-                    output += $" / {assoc.TankSecondary}";
-                }
-
-                if (!string.IsNullOrEmpty(assoc.TankCustom))
-                {
-                    output += $" / {assoc.TankCustom}";
-                }
-
+                output += $"|c{GetHealerClassColor(assoc.PlayerHealer.PlayerClass)}{assoc.PlayerHealer.Name}|r{healTargetString}";
                 output += Environment.NewLine;
             });
 
@@ -144,17 +131,17 @@ namespace HeilerEinteilung
                 {
                     string[] assocValues = lines[lineIndex].Split(';');
 
-                    if (assocValues.Length < 6)
+                    if (assocValues.Length < 5)
                     {
                         continue;
                     }
 
                     var tankName = assocValues[0];
                     var healerName = assocValues[1];
-                    var bossName = assocValues.Length == 7 ? assocValues[6] : "";
+                    var bossName = assocValues.Length == 6 ? assocValues[5] : "";
 
                     tbBossName.Text = bossName;
-                    tankHealerAssociations.Add(new TankHealerAssociation(this, healerName, tankName, assocValues[2], assocValues[3], assocValues[4], assocValues[5], lineIndex));
+                    tankHealerAssociations.Add(new TankHealerAssociation(this, healerName, tankName, assocValues[2], assocValues[3], assocValues[4], lineIndex));
                 }
             }
 
@@ -176,10 +163,24 @@ namespace HeilerEinteilung
                 {
                     tankHealerAssociations.ForEach(assoc =>
                     {
-                        writer.WriteLine($@"{assoc.TankName};{assoc.HealerName};{assoc.HealerClassName};{assoc.TankPrimary};{assoc.TankSecondary};{assoc.TankCustom};{tbBossName.Text}");
+                        if (assoc.PlayerTank != null)
+                        {
+                            writer.WriteLine($@"{assoc.PlayerTank.Name};{assoc.PlayerHealer.Name};{assoc.TankPrimary};{assoc.TankSecondary};{assoc.TankCustom};{tbBossName.Text}");
+                        }
+                        else
+                        {
+                            writer.WriteLine($@";{assoc.PlayerHealer.Name};{assoc.TankPrimary};{assoc.TankSecondary};{assoc.TankCustom};{tbBossName.Text}");
+                        }
                     });
                 }
             }
         }
+
+        private void zurücksetzenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tankHealerAssociations.Clear();
+            RerenderAssocs();
+            tbBossName.Text = "";
+        }
     }
-    }
+}

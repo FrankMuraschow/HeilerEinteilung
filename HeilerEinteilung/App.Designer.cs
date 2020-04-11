@@ -38,6 +38,7 @@
             this.speichernToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chatnachrichtInZwischenablageKopierenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zurücksetzenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,7 +90,8 @@
             // 
             this.dateiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ladenToolStripMenuItem,
-            this.speichernToolStripMenuItem});
+            this.speichernToolStripMenuItem,
+            this.zurücksetzenToolStripMenuItem});
             this.dateiToolStripMenuItem.Name = "dateiToolStripMenuItem";
             this.dateiToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.dateiToolStripMenuItem.Text = "Datei";
@@ -123,6 +125,13 @@
             this.chatnachrichtInZwischenablageKopierenToolStripMenuItem.Text = "Chatnachricht in Zwischenablage kopieren";
             this.chatnachrichtInZwischenablageKopierenToolStripMenuItem.Click += new System.EventHandler(this.chatnachrichtInZwischenablageKopierenToolStripMenuItem_Click);
             // 
+            // zurücksetzenToolStripMenuItem
+            // 
+            this.zurücksetzenToolStripMenuItem.Name = "zurücksetzenToolStripMenuItem";
+            this.zurücksetzenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.zurücksetzenToolStripMenuItem.Text = "Zurücksetzen";
+            this.zurücksetzenToolStripMenuItem.Click += new System.EventHandler(this.zurücksetzenToolStripMenuItem_Click);
+            // 
             // App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -154,6 +163,7 @@
         private System.Windows.Forms.ToolStripMenuItem speichernToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generatorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem chatnachrichtInZwischenablageKopierenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem zurücksetzenToolStripMenuItem;
     }
 }
 

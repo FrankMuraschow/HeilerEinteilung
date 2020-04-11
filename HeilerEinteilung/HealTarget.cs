@@ -15,6 +15,7 @@ namespace HeilerEinteilung
         T5,
         AT,
         Melees,
-        Range
+        Raid,
+        Range        
     }
 }

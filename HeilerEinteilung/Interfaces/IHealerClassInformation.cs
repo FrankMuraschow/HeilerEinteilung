@@ -8,7 +8,7 @@ namespace HeilerEinteilung.Interfaces
 {
     internal interface IHealerClassInformation
     {
-        HealerClass HealerClass { get; }
+        PlayerClass HealerClass { get; }
         string ColorString { get; }
     }
 }

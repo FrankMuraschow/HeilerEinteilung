@@ -80,7 +80,7 @@
     <Compile Include="App.Designer.cs">
       <DependentUpon>App.cs</DependentUpon>
     </Compile>
-    <Compile Include="HealerClass.cs" />
+    <Compile Include="PlayerClass.cs" />
     <Compile Include="Interfaces\IHealerClassInformation.cs" />
     <Compile Include="PlayerInformation.cs" />
     <Compile Include="Players.cs" />
